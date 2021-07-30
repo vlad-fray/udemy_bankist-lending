@@ -3,16 +3,10 @@
 //DOM elements
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
-const btnCloseModal = document.querySelector(
-	'.btn--close-modal'
-);
-const btnsOpenModal = document.querySelectorAll(
-	'.btn--show-modal'
-);
+const btnCloseModal = document.querySelector('.btn--close-modal');
+const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 
-const btnScrollTo = document.querySelector(
-	'.btn--scroll-to'
-);
+const btnScrollTo = document.querySelector('.btn--scroll-to');
 const nav = document.querySelector('.nav');
 const navLinks = document.querySelector('.nav__links');
 
@@ -20,23 +14,16 @@ const tabs = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector(
 	'.operations__tab-container'
 );
-const tabsContent = document.querySelectorAll(
-	'.operations__content'
-);
+const tabsContent = document.querySelectorAll('.operations__content');
 
 const header = document.querySelector('.header');
 const allSections = document.querySelectorAll('.section');
-const imgTargets =
-	document.querySelectorAll('img[data-src]');
+const imgTargets = document.querySelectorAll('img[data-src]');
 
 const slider = document.querySelector('.slider');
 const slides = document.querySelectorAll('.slide');
-const sliderBtnLeft = document.querySelector(
-	'.slider__btn--left'
-);
-const sliderBtnRight = document.querySelector(
-	'.slider__btn--right'
-);
+const sliderBtnLeft = document.querySelector('.slider__btn--left');
+const sliderBtnRight = document.querySelector('.slider__btn--right');
 const dotContainer = document.querySelector('.dots');
 
 //Variables
@@ -122,13 +109,10 @@ const headerObserver = new IntersectionObserver(stickyNav, {
 	threshold: 0,
 }).observe(header);
 
-const sectionObserver = new IntersectionObserver(
-	revealSection,
-	{
-		root: null,
-		threshold: 0.15,
-	}
-);
+const sectionObserver = new IntersectionObserver(revealSection, {
+	root: null,
+	threshold: 0.15,
+});
 allSections.forEach((sec) => {
 	sectionObserver.observe(sec);
 	sec.classList.add('section--hidden');
@@ -156,10 +140,7 @@ btnsOpenModal.forEach(function (btn) {
 btnCloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 document.addEventListener('keydown', function (e) {
-	if (
-		e.key === 'Escape' &&
-		!modal.classList.contains('hidden')
-	) {
+	if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
 		closeModal();
 	}
 });
@@ -174,9 +155,7 @@ navLinks.addEventListener('click', function (e) {
 	if (e.target.classList.contains('nav__link')) {
 		const id = e.target.getAttribute('href');
 		if (id === '#') return;
-		document
-			.querySelector(id)
-			.scrollIntoView({ behavior: 'smooth' });
+		document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
 	}
 });
 
@@ -200,16 +179,12 @@ tabsContainer.addEventListener('click', function (e) {
 		tabC.classList.remove('operations__content--active')
 	);
 	document
-		.querySelector(
-			`.operations__content--${clicked.dataset.tab}`
-		)
+		.querySelector(`.operations__content--${clicked.dataset.tab}`)
 		.classList.add('operations__content--active');
 });
 
 //Menu fade animation
-nav.addEventListener('mouseover', (e) =>
-	handleHover(e, 0.5)
-);
+nav.addEventListener('mouseover', (e) => handleHover(e, 0.5));
 nav.addEventListener('mouseout', (e) => handleHover(e, 1));
 
 // Slider
